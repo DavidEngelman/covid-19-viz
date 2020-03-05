@@ -1,107 +1,180 @@
-
 <!doctype html>
 
 <html lang="en">
 
-  <head>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://www.amcharts.com/lib/4/core.js"></script>
-      <script src="https://www.amcharts.com/lib/4/maps.js"></script>
-      <script src="https://www.amcharts.com/lib/4/charts.js"></script>
-      <script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
-      <script src="https://www.amcharts.com/lib/4/geodata/worldHigh.js"></script>
-      <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
-      <script src="../static/map.js"></script>
-      <link rel="stylesheet" href="../static/style.css">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://www.amcharts.com/lib/4/core.js"></script>
+  <script src="https://www.amcharts.com/lib/4/maps.js"></script>
+  <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+  <script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
+  <script src="https://www.amcharts.com/lib/4/geodata/worldHigh.js"></script>
+  <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+  <script src="../static/map.js"></script>
 
-      <script src="../static/timeseries.js"></script>
-      
-      <script src="../static/parseData.js"></script>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>    
-  </head>
+  <script src="../static/timeseries.js"></script>
 
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="#"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#map">Map <span class="sr-only">(current)</span></a>
+  <script src="../static/parseData.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+  <link rel="stylesheet" href="../static/style.css">
+
+</head>
+
+<nav class="navbar navbar-expand fixed-top navbar-dark" style="background-color: #262a2d; height: 4em;">
+  <a class="navbar-brand" href="#"><b>Covid-19 Viz.</b></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#map">Map <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#timeline">Timeline</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#data">Data</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#timeline">Timeline</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+    </ul>
+  </div>
+</nav>
 
-  <body style=" background-color: #343b40;">
-    <div class="container p-3 my-3 bg-dark text-white">
+<body style=" background-color: #343b40;">
+  <div class="container p-3 my-3 bg-dark text-white">
 
-      <section id="map">
-          <h2 style="margin-bottom: 20px;"> Map </h2>
+    
+    <section id="map" style="height: 100vh;">
+      <h2 style="margin-bottom: 20px;"> Map </h2>
+      <div class="row">
+        <div class="col-sm"></div>
+        <div class="col-sm">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+              <input type="radio" name="options" id="confirmed" onclick="setMapData('confirmed')" checked> Confirmed
+              Cases
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="deaths" onclick="setMapData('deaths')"> Deaths
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="recovered" onclick="setMapData('recovered')"> Recovered
+            </label>
+          </div>
+        </div>
+        <div class="col-sm"></div>
+      </div>
 
-          <div class="row">
-              <div class="col-sm"></div>
-              <div class="col-sm">
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                  <label class="btn btn-secondary active">
-                    <input type="radio" name="options" id="confirmed" onclick="setMapData('confirmed')" checked> Confirmed Cases
-                  </label>
-                  <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="deaths" onclick="setMapData('deaths')"> Deaths
-                  </label>
-                  <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="recovered" onclick="setMapData('recovered')"> Recovered
-                  </label>
-                </div>
-              </div>
-              <div class="col-sm"></div>
-            </div>
-              
-              <div id="mapdiv" style="margin-top: 1em; height: 40em;"></div>
-        
-      </section>
+      <div id="mapdiv" style="margin-top: 1em; height: 90vh;"></div>
 
-      <section id="timeline">
-          <h2 style="margin-bottom: 20px;"> Timeline </h2>
-            <div id="tsdiv" style="margin-top: 1em; height: 20em;"></div>
+    </section>
 
-      </section>
+    <section id="timeline" style="margin-top: 5em;">
+      <h2 style="margin-bottom: 20px;"> Timeline </h2>
 
-    </div>
+      <div class="row">
+
+        <select class="selectpicker" data-live-search="true" data-style="btn-secondary">
+          <option>Belgium</option>
+          <option>Ketchup</option>
+          <option>Barbecue</option>
+        </select>
+
+
+        <div class="col-sm">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary ts-button active">
+              <input class="ts-type-selector" type="radio" name="options" id="confirmed" onclick="setTsData('confirmed')" checked> Confirmed
+              Cases
+            </label>
+            <label class="btn btn-secondary ts-button">
+              <input class="ts-type-selector", type="radio" name="options" id="deaths" onclick="setTsData('deaths')"> Deaths
+            </label>
+            <label class="btn btn-secondary ts-button">
+              <input class="ts-type-selector", type="radio" name="options" id="recovered" onclick="setTsData('recovered')"> Recovered
+            </label>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="tsdiv" style="margin-top: 1em; height: 50vh;"></div>
+
+    </section>
+
+    <section id="data">
+        <h2 style="margin-bottom: 1em;"> Data </h2>
+        <p style="text-align: justify; font-size: x-large;">
+          All the data used for visualisation are retrieved from the <a href="https://github.com/ExpDev07/coronavirus-tracker-api">coronavirus-tracker-api</a>.
+          The API gets its data from the 2019 <a href="https://github.com/CSSEGISandData/COVID-19">Novel Coronavirus (nCoV) Data Repository</a>, provided by JHU CCSE.
+        </p>
       
-      
+    </section>
 
-  </body>
+  </div>
+
+
+
+</body>
+
 </html>
 
+
+
+
+    
+    
 
 
 
 
 
 <script>
+  ts_params = {"type": "confirmed", "country": "BE"};
+  $(document).ready(function () {
+    $.get('https://coronavirus-tracker-api.herokuapp.com/all')
+      .done(function (response) {
 
-    ts_params = {"type": "confirmed", "country": "BE"};
-    
-    $(document).ready(function(){
-        $.get('https://coronavirus-tracker-api.herokuapp.com/all')
-         .done(function(response) {
+        //create map
+        mapData = parse_map(response);
+        polygonSeries = create_map();
 
-                //create map
-                mapData = parse_map(response);
-                polygonSeries = create_map();
+        //create ts
+        tsData = parse_timeseries(response);
+        tsChart = create_ts()
+      });
+  })
 
-                //create ts
-                tsData = parse_timeseries(response);
-                tsChart = create_ts()
-         });
-    })
+  $('.navbar-nav .nav-link').click(function(){
+    $('.navbar-nav .nav-link').removeClass('active');
+    $(this).addClass('active');
+  })
+
+  function tsUpdate() {
+
+    var selected= '';
+    $('#Group .active').each(function(){
+        selected= $(this).attr('id'); 
+    }); 
+    console.log(selected)
+    setTsData(selected, "Belgium");
+
+      
+  }
+
 </script>
-
-

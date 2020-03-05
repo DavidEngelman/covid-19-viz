@@ -3,13 +3,16 @@
     font-weight: 400;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
 section {
+    padding-top: 4em;
     margin-top: 3em;
 }
 
 h2 {
+    font-size: 50px;
     text-align: center;
 }
