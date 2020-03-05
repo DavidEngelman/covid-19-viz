@@ -3,11 +3,14 @@
     font-weight: 400;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
 section {
+    padding-top: 4em;
     margin-top: 3em;
+    height: 100vh;
 }
 
 h2 {
