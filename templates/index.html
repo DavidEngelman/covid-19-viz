@@ -1,5 +1,6 @@
 
 <!doctype html>
+
 <html lang="en">
 
   <head>
@@ -11,6 +12,8 @@
       <script src="https://www.amcharts.com/lib/4/geodata/worldHigh.js"></script>
       <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
       <script src="../static/map.js"></script>
+      <link rel="stylesheet" href="../static/style.css">
+
       <script src="../static/timeseries.js"></script>
       
       <script src="../static/parseData.js"></script>
@@ -20,58 +23,61 @@
   </head>
 
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Fixed navbar</a>
+    <a class="navbar-brand" href="#"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Map <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#map">Map <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Timeline</a>
+          <a class="nav-link" href="#timeline">Timeline</a>
         </li>
       </ul>
     </div>
   </nav>
 
-  <body>
-    <section id="map">
-        <div class="row">
-            <div class="col-sm"></div>
-            <div class="col-sm">
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-secondary active">
-                  <input type="radio" name="options" id="confirmed" onclick="setMapData('confirmed')" checked> Confirmed Cases
-                </label>
-                <label class="btn btn-secondary">
-                  <input type="radio" name="options" id="deaths" onclick="setMapData('deaths')"> Deaths
-                </label>
-                <label class="btn btn-secondary">
-                  <input type="radio" name="options" id="recovered" onclick="setMapData('recovered')"> Recovered
-                </label>
+  <body style=" background-color: #343b40;">
+    <div class="container p-3 my-3 bg-dark text-white">
+
+      <section id="map">
+          <h2 style="margin-bottom: 20px;"> Map </h2>
+
+          <div class="row">
+              <div class="col-sm"></div>
+              <div class="col-sm">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-secondary active">
+                    <input type="radio" name="options" id="confirmed" onclick="setMapData('confirmed')" checked> Confirmed Cases
+                  </label>
+                  <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="deaths" onclick="setMapData('deaths')"> Deaths
+                  </label>
+                  <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="recovered" onclick="setMapData('recovered')"> Recovered
+                  </label>
+                </div>
               </div>
+              <div class="col-sm"></div>
             </div>
-            <div class="col-sm"></div>
-          </div>
-            
-            <div id="mapdiv"></div>
-      
-    </section>
+              
+              <div id="mapdiv" style="margin-top: 1em; height: 40em;"></div>
+        
+      </section>
 
-    <section id="timeline">
-        <div id="tsdiv"></div>
-    </section>
+      <section id="timeline">
+          <h2 style="margin-bottom: 20px;"> Timeline </h2>
+            <div id="tsdiv" style="margin-top: 1em; height: 20em;"></div>
 
+      </section>
+
+    </div>
       
       
 
   </body>
-
-  
-
-
 </html>
 
 
