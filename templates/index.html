@@ -19,49 +19,52 @@
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>    
   </head>
 
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Fixed navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Map <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Timeline</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
   <body>
-
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">Fixed navbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Map <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Timeline</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <main role="main" class="container">
-
-      <div class="row">
-        <div class="col-sm"></div>
-        <div class="col-sm">
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-secondary active">
-              <input type="radio" name="options" id="confirmed" onclick="setMapData('confirmed')" checked> Confirmed Cases
-            </label>
-            <label class="btn btn-secondary">
-              <input type="radio" name="options" id="deaths" onclick="setMapData('deaths')"> Deaths
-            </label>
-            <label class="btn btn-secondary">
-              <input type="radio" name="options" id="recovered" onclick="setMapData('recovered')"> Recovered
-            </label>
+    <section id="map">
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-sm">
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary active">
+                  <input type="radio" name="options" id="confirmed" onclick="setMapData('confirmed')" checked> Confirmed Cases
+                </label>
+                <label class="btn btn-secondary">
+                  <input type="radio" name="options" id="deaths" onclick="setMapData('deaths')"> Deaths
+                </label>
+                <label class="btn btn-secondary">
+                  <input type="radio" name="options" id="recovered" onclick="setMapData('recovered')"> Recovered
+                </label>
+              </div>
+            </div>
+            <div class="col-sm"></div>
           </div>
-        </div>
-        <div class="col-sm"></div>
-      </div>
-        
-        <div id="mapdiv"></div>
-        <div id="tsdiv"></div>
+            
+            <div id="mapdiv"></div>
       
-    </main>
+    </section>
+
+    <section id="timeline">
+        <div id="tsdiv"></div>
+    </section>
+
+      
       
 
   </body>
