@@ -86,6 +86,9 @@
 
 
 <script>
+
+    ts_params = {"type": "confirmed", "country": "BE"};
+    
     $(document).ready(function(){
         $.get('https://coronavirus-tracker-api.herokuapp.com/all')
          .done(function(response) {
