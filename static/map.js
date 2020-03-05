@@ -1,3 +1,10 @@
+colors = {
+  "confirmed": {"min": am4core.color("#3498db"), "max": am4core.color("#2980b9")},
+  "deaths": {"min": am4core.color("#e74c3c"), "max": am4core.color("#c0392b")},
+  "recovered": {"min": am4core.color("#2ecc71"), "max": am4core.color("#27ae60")}
+
+}
+
 
 function create_map() {
     am4core.useTheme(am4themes_animated);
@@ -13,12 +20,14 @@ function create_map() {
     var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
     polygonSeries.exclude = ["AQ"];
 
+    console.log(chart.colors.getIndex(1))
+
     //Set min/max fill color for each area
     polygonSeries.heatRules.push({
       property: "fill",
       target: polygonSeries.mapPolygons.template,
-      min: chart.colors.getIndex(1).brighten(1),
-      max: chart.colors.getIndex(1).brighten(-0.3)
+      min: colors["confirmed"]["min"],
+      max: colors["confirmed"]["max"]
     });
 
     // Make map load polygon data (state shapes and names) from GeoJSON
@@ -51,5 +60,12 @@ function create_map() {
 
 function setMapData(map_name) {
     polygonSeries.data = mapData[map_name];
+    polygonSeries.heatRules.pop()
+    polygonSeries.heatRules.push({
+      property: "fill",
+      target: polygonSeries.mapPolygons.template,
+      min: colors[map_name]["min"],
+      max: colors[map_name]["max"]
+    });
 
 }
