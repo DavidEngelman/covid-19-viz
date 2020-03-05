@@ -4,9 +4,9 @@ Visualization of the covid-19 outbreak.
 
 ## Interactive Map
 
-![Interactive Map](/screenshots/map)
+![Interactive Map](/screenshots/map.png)
 
 
 ## Timeseries by Country
 
-![Timeseries](/screenshots/timseries.png)
+![Timeseries](/screenshots/timeseries.png)
