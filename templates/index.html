@@ -33,8 +33,8 @@
 
 </head>
 
-<nav class="navbar navbar-expand fixed-top navbar-dark bg-dark ">
-  <a class="navbar-brand" href="#">Covid-19 Viz.</a>
+<nav class="navbar navbar-expand fixed-top navbar-dark" style="background-color: #262a2d; height: 4em;">
+  <a class="navbar-brand" href="#"><b>Covid-19 Viz.</b></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -47,6 +47,9 @@
       <li class="nav-item">
         <a class="nav-link" href="#timeline">Timeline</a>
       </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#data">Data</a>
+        </li>
     </ul>
   </div>
 </nav>
@@ -54,9 +57,9 @@
 <body style=" background-color: #343b40;">
   <div class="container p-3 my-3 bg-dark text-white">
 
-    <section id="map">
+    
+    <section id="map" style="height: 100vh;">
       <h2 style="margin-bottom: 20px;"> Map </h2>
-
       <div class="row">
         <div class="col-sm"></div>
         <div class="col-sm">
@@ -80,7 +83,7 @@
 
     </section>
 
-    <section id="timeline">
+    <section id="timeline" style="margin-top: 5em;">
       <h2 style="margin-bottom: 20px;"> Timeline </h2>
 
       <div class="row">
@@ -114,6 +117,15 @@
 
     </section>
 
+    <section id="data">
+        <h2 style="margin-bottom: 1em;"> Data </h2>
+        <p style="text-align: justify; font-size: x-large;">
+          All the data used for visualisation are retrieved from the <a href="https://github.com/ExpDev07/coronavirus-tracker-api">coronavirus-tracker-api</a>.
+          The API gets its data from the 2019 <a href="https://github.com/CSSEGISandData/COVID-19">Novel Coronavirus (nCoV) Data Repository</a>, provided by JHU CCSE.
+        </p>
+      
+    </section>
+
   </div>
 
 
@@ -141,4 +153,10 @@
         tsChart = create_ts()
       });
   })
+
+  $('.navbar-nav .nav-link').click(function(){
+    $('.navbar-nav .nav-link').removeClass('active');
+    $(this).addClass('active');
+})
+
 </script>
