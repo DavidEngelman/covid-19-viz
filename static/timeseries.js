@@ -16,11 +16,11 @@ function create_ts(data_type, country_code){
     series.dataFields.valueY = "value";
     series.dataFields.dateX = "date";
     series.strokeWidth = 3;
-    series.stroke = colors[data_type]["min"];
+    series.stroke = colors[data_type]["max"];
 
     var bullet = series.bullets.push(new am4charts.CircleBullet());
-    bullet.circle.stroke = colors[data_type]["min"];
-    bullet.circle.fill = colors[data_type]["min"];
+    bullet.circle.stroke = colors[data_type]["max"];
+    bullet.circle.fill = colors[data_type]["max"];
     bullet.tooltipText = "{dateX} : {valueY}";
 
     

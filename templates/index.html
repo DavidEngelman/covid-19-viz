@@ -80,7 +80,6 @@
       </div>
 
       <div id="mapdiv" style="margin-top: 1em; height: 90vh;"></div>
-      <p style="text-align: right;">*Grey = no data</p>
 
     </section>
 
@@ -170,7 +169,6 @@
 
         // Add Options to select for timeseries
         var selectElement = document.getElementById('select_ts');
-        console.log(selectElement)
 
         for (var country in tsData["confirmed"]) {
           var option = document.createElement("option");
@@ -202,7 +200,6 @@
     $('#Group .active').each(function () {
       selected = $(this).attr('id');
     });
-    console.log(selected)
     setTsData(selected, "Belgium");
 
 
