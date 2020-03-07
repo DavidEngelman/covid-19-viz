@@ -1,7 +1,7 @@
 colors = {
-  "confirmed": {"min": am4core.color("#2980b9").brighten(0.6), "max": am4core.color("#2980b9").brighten(-0.6)},
-  "deaths": {"min": am4core.color("#c0392b").brighten(0.6), "max": am4core.color("#c0392b").brighten(-0.6)},
-  "recovered": {"min": am4core.color("#27ae60").brighten(0.4), "max": am4core.color("#27ae60").brighten(-0.4)}
+  "confirmed": {"min": am4core.color("#d9d9d9"), "max": am4core.color("#2980b9")},
+  "deaths": {"min": am4core.color("#d9d9d9"), "max": am4core.color("#c0392b")},
+  "recovered": {"min": am4core.color("#d9d9d9"), "max": am4core.color("#27ae60")}
 
 }
 
@@ -45,7 +45,7 @@ function create_map(map_name) {
 
     // Create hover state and set alternative fill color
     var hs = polygonTemplate.states.create("hover");
-    hs.properties.fill = colors[map_name]["max"];
+    //hs.properties.fill = colors[map_name]["max"];
 
 
     return polygonSeries
