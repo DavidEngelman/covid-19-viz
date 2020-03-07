@@ -33,6 +33,7 @@
 
 </head>
 
+<!-- Navbar -->
 <nav class="navbar navbar-expand fixed-top navbar-dark" style="background-color: #262a2d; height: 4em;">
   <a class="navbar-brand" href="#"><b>Covid-19 Viz.</b></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -57,7 +58,32 @@
 <body style=" background-color: #343a40;">
   <div class="container p-3 my-3 bg-dark text-white">
 
+    <!-- Stats -->
+    <section id="stats">
+      <div class="card-deck" style="margin-bottom:2em;">
+        <div class="card bg-dark border-0">
+          <div class="card-body" style="text-align: center;">
+            <h5 class="card-title count" data-value=0 id=confirmed_cases-stat>0</h5>
+            <p class="card-text" style="text-align: center; ">Confirmed Cases</p>
+          </div>
+        </div>
+        <div class="card bg-dark border-0">
+          <div class="card-body" style="text-align: center;">
+            <h5 class="card-title count" data-value=0 id="deaths-stat">0</h5>
+            <p class="card-text" style="text-align: center; ">Deaths</p>
+          </div>
+        </div>
+        <div class="card bg-dark border-0">
+          <div class="card-body" style="text-align: center;">
+            <h5 class="card-title count" data-value=10000 id="recovered-stat">0</h5>
+            <p class="card-text" style="text-align: center;">Recovered</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
+
+    <!-- Map -->
     <section id="map" style="height: 100vh;">
       <h2 style="margin-bottom: 20px;"> Map </h2>
       <div class="row">
@@ -83,6 +109,7 @@
 
     </section>
 
+    <!-- Timeline -->
     <section id="timeline" style="margin-top: 5em;">
       <h2 style="margin-bottom: 20px;"> Timeline </h2>
 
@@ -144,6 +171,10 @@
 
 <script>
 
+  function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+  }
+
 
   var selected_ts_radio = "confirmed"
   var selected_ts_selectPicker = "China"
@@ -152,6 +183,12 @@
     // Get Data from API
     $.get('https://coronavirus-tracker-api.herokuapp.com/all')
       .done(function (response) {
+
+        // Get basic stats
+        $("#confirmed_cases-stat").text(formatNumber(response.confirmed.latest));
+        $("#deaths-stat").text(formatNumber(response.deaths.latest));
+        $("#recovered-stat").text(formatNumber(response.recovered.latest));
+
 
         //create map
         mapData = parse_map(response);
