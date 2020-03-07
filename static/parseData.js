@@ -38,7 +38,8 @@ function parse_map(raw_data) {
         });
 
         for (var elem in tmp) {
-            res[key].push({ "id": elem, "value": tmp[elem] });
+            if (tmp[elem] == 0) {log = 0} else {log = Math.log(tmp[elem])}
+            res[key].push({"id": elem, "value": log, "realValue": tmp[elem]});
         }
     }
     return res

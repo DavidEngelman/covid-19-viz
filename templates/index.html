@@ -55,9 +55,7 @@
   </div>
 </nav>
 
-<!-- Body -->
-
-<body style=" background-color: #343b40;">
+<body style=" background-color: #343a40;">
   <div class="container p-3 my-3 bg-dark text-white">
 
     <!-- Stats -->
@@ -108,6 +106,8 @@
       </div>
 
       <div id="mapdiv" style="margin-top: 1em; height: 90vh;"></div>
+      <p style="text-align: right;">*Grey = no data</p>
+
     </section>
 
     <!-- Timeline -->
@@ -214,7 +214,10 @@
           option.text = getCountry(country);
           selectElement.add(option);
         }
+
+        $('.selectpicker').selectpicker('val', 'Belgium');
         $('.selectpicker').selectpicker('refresh');
+
         $('.selectpicker').on('change', function (e) {
           selected_ts_selectPicker = this.value
           setTsData(selected_ts_selectPicker, selected_ts_radio)
