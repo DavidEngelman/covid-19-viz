@@ -6,7 +6,7 @@ colors = {
 }
 
 
-function create_map() {
+function create_map(map_name) {
     am4core.useTheme(am4themes_animated);
      // Create map instance
     var chart = am4core.create("mapdiv", am4maps.MapChart);
@@ -26,15 +26,15 @@ function create_map() {
     polygonSeries.heatRules.push({
       property: "fill",
       target: polygonSeries.mapPolygons.template,
-      min: colors["confirmed"]["min"],
-      max: colors["confirmed"]["max"]
+      min: colors[map_name]["min"],
+      max: colors[map_name]["max"]
     });
 
     // Make map load polygon data (state shapes and names) from GeoJSON
     polygonSeries.useGeodata = true;
 
     // Set heatmap values for each state
-    polygonSeries.data = mapData["confirmed"];
+    polygonSeries.data = mapData[map_name];
 
 
     // Configure series tooltip
@@ -59,13 +59,6 @@ function create_map() {
 
 
 function setMapData(map_name) {
-    polygonSeries.data = mapData[map_name];
-    polygonSeries.heatRules.pop()
-    polygonSeries.heatRules.push({
-      property: "fill",
-      target: polygonSeries.mapPolygons.template,
-      min: colors[map_name]["min"],
-      max: colors[map_name]["max"]
-    });
+    create_map(map_name)
 
 }

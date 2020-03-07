@@ -1,8 +1,8 @@
-function create_ts(){
+function create_ts(data_type, country_code){
     var chart = am4core.create("tsdiv", am4charts.XYChart);
 
     // Add data
-    chart.data = tsData["confirmed"]["BE"]
+    chart.data = tsData[data_type][country_code]
 
     // Create axes
     var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
@@ -24,7 +24,8 @@ function create_ts(){
 
 }
 
-function setTsData(map_type, country){
+function setTsData(country, data_type){
+    console.log(country, data_type)
     var country_code = isoCountries[country]
-    tsChart.data = tsData[map_type][country_code]
+    create_ts(data_type, country_code)
 } 
