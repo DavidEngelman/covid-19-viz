@@ -2,6 +2,8 @@
 
 Visualization of the covid-19 outbreak.
 
+https://covid-19-viz.herokuapp.com/
+
 ## Interactive Map
 
 ![Interactive Map](/screenshots/map.png)
