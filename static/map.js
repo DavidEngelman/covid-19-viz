@@ -45,7 +45,8 @@ function create_map(map_name) {
 
     // Create hover state and set alternative fill color
     var hs = polygonTemplate.states.create("hover");
-    hs.properties.fill = am4core.color("#3c5bdc");
+    hs.properties.fill = colors[map_name]["max"];
+
 
     return polygonSeries
 

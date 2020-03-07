@@ -16,8 +16,14 @@ function create_ts(data_type, country_code){
     series.dataFields.valueY = "value";
     series.dataFields.dateX = "date";
     series.strokeWidth = 3;
+    series.stroke = colors[data_type]["min"];
 
     var bullet = series.bullets.push(new am4charts.CircleBullet());
+    bullet.circle.stroke = colors[data_type]["min"];
+    bullet.circle.fill = colors[data_type]["min"];
+    bullet.tooltipText = "{dateX} : {valueY}";
+
+    
 
     return chart
 

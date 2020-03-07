@@ -173,7 +173,7 @@
 
         for (var country in tsData["confirmed"]) {
           var option = document.createElement("option");
-          option.text = countriesIso[country];
+          option.text = getCountry(country);
           selectElement.add(option);
         }
         $('.selectpicker').selectpicker('refresh');
