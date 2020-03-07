@@ -176,7 +176,10 @@
           option.text = getCountry(country);
           selectElement.add(option);
         }
+
+        $('.selectpicker').selectpicker('val', 'Belgium');
         $('.selectpicker').selectpicker('refresh');
+
         $('.selectpicker').on('change', function (e) {
           selected_ts_selectPicker = this.value
           setTsData(selected_ts_selectPicker, selected_ts_radio)
