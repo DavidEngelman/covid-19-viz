@@ -1,7 +1,7 @@
 colors = {
-  "confirmed": {"min": am4core.color("#3498db"), "max": am4core.color("#2980b9")},
-  "deaths": {"min": am4core.color("#e74c3c"), "max": am4core.color("#c0392b")},
-  "recovered": {"min": am4core.color("#2ecc71"), "max": am4core.color("#27ae60")}
+  "confirmed": {"min": am4core.color("#2980b9").brighten(0.6), "max": am4core.color("#2980b9").brighten(-0.6)},
+  "deaths": {"min": am4core.color("#c0392b").brighten(0.6), "max": am4core.color("#c0392b").brighten(-0.6)},
+  "recovered": {"min": am4core.color("#27ae60").brighten(0.4), "max": am4core.color("#27ae60").brighten(-0.4)}
 
 }
 
@@ -39,7 +39,7 @@ function create_map(map_name) {
 
     // Configure series tooltip
     var polygonTemplate = polygonSeries.mapPolygons.template;
-    polygonTemplate.tooltipText = "{name}: {value}";
+    polygonTemplate.tooltipText = "{name}: {realValue}";
     polygonTemplate.nonScalingStroke = true;
     polygonTemplate.strokeWidth = 0.5;
 
