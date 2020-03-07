@@ -3,6 +3,8 @@
 <html lang="en">
 
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://www.amcharts.com/lib/4/core.js"></script>
   <script src="https://www.amcharts.com/lib/4/maps.js"></script>
@@ -56,106 +58,120 @@
 </nav>
 
 <body style=" background-color: #343a40;">
-  <div class="container p-3 my-3 bg-dark text-white">
+  <main role=" main" class="container">
+    <div class="container p-3 my-3 bg-dark text-white">
 
-    <!-- Stats -->
-    <section id="stats">
-      <div class="card-deck" style="margin-bottom:2em;">
-        <div class="card bg-dark border-0">
-          <div class="card-body" style="text-align: center;">
-            <h5 class="card-title count" data-value=0 id=confirmed_cases-stat>0</h5>
-            <p class="card-text" style="text-align: center; ">Confirmed Cases</p>
+      <!-- Stats -->
+      <section id="stats">
+        <div class="card-deck" style="margin-bottom:2em;">
+          <div class="card bg-dark border-0">
+            <div class="card-body" style="text-align: center;">
+              <h5 class="card-title count" data-value=0 id=confirmed_cases-stat>0</h5>
+              <p class="card-text" style="text-align: center; ">Confirmed Cases</p>
+            </div>
+          </div>
+          <div class="card bg-dark border-0">
+            <div class="card-body" style="text-align: center;">
+              <h5 class="card-title count" data-value=0 id="deaths-stat">0</h5>
+              <p class="card-text" style="text-align: center; ">Deaths</p>
+            </div>
+          </div>
+          <div class="card bg-dark border-0">
+            <div class="card-body" style="text-align: center;">
+              <h5 class="card-title count" data-value=10000 id="recovered-stat">0</h5>
+              <p class="card-text" style="text-align: center;">Recovered</p>
+            </div>
           </div>
         </div>
-        <div class="card bg-dark border-0">
-          <div class="card-body" style="text-align: center;">
-            <h5 class="card-title count" data-value=0 id="deaths-stat">0</h5>
-            <p class="card-text" style="text-align: center; ">Deaths</p>
+      </section>
+
+
+      <!-- Map -->
+      <section id="map" style="height: 100vh;">
+        <h2 style="margin-bottom: 20px;"> Map </h2>
+        <div class="row">
+          <div class="col-sm"></div>
+          <div class="col-sm">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-secondary active">
+                <input type="radio" name="options" id="confirmed" onclick="setMapData('confirmed')" checked> Confirmed
+                Cases
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="deaths" onclick="setMapData('deaths')"> Deaths
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="recovered" onclick="setMapData('recovered')"> Recovered
+              </label>
+            </div>
           </div>
-        </div>
-        <div class="card bg-dark border-0">
-          <div class="card-body" style="text-align: center;">
-            <h5 class="card-title count" data-value=10000 id="recovered-stat">0</h5>
-            <p class="card-text" style="text-align: center;">Recovered</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- Map -->
-    <section id="map" style="height: 100vh;">
-      <h2 style="margin-bottom: 20px;"> Map </h2>
-      <div class="row">
-        <div class="col-sm"></div>
-        <div class="col-sm">
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-secondary active">
-              <input type="radio" name="options" id="confirmed" onclick="setMapData('confirmed')" checked> Confirmed
-              Cases
-            </label>
-            <label class="btn btn-secondary">
-              <input type="radio" name="options" id="deaths" onclick="setMapData('deaths')"> Deaths
-            </label>
-            <label class="btn btn-secondary">
-              <input type="radio" name="options" id="recovered" onclick="setMapData('recovered')"> Recovered
-            </label>
-          </div>
-        </div>
-        <div class="col-sm"></div>
-      </div>
-
-      <div id="mapdiv" style="margin-top: 1em; height: 90vh;"></div>
-
-    </section>
-
-    <!-- Timeline -->
-    <section id="timeline" style="margin-top: 5em;">
-      <h2 style="margin-bottom: 20px;"> Timeline </h2>
-
-      <div class="row">
-
-        <select id=select_ts class="selectpicker" data-live-search="true" data-style="btn-secondary">
-        </select>
-
-
-        <div class="col-sm">
-          <div id=buttonsTs class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-secondary ts-button active">
-              <input class="ts-type-selector" type="radio" name="options" id="confirmed" checked> Confirmed Cases
-            </label>
-            <label class="btn btn-secondary ts-button">
-              <input class="ts-type-selector" , type="radio" name="options" id="deaths"> Deaths
-            </label>
-            <label class="btn btn-secondary ts-button">
-              <input class="ts-type-selector" , type="radio" name="options" id="recovered"> Recovered
-            </label>
-          </div>
+          <div class="col-sm"></div>
         </div>
 
+        <div id="mapdiv" style="margin-top: 1em; height: 90vh;"></div>
 
-      </div>
+      </section>
 
-      <div id="tsdiv" style="margin-top: 1em; height: 50vh;"></div>
+      <!-- Timeline -->
+      <section id="timeline" style="margin-top: 5em;">
+        <h2 style="margin-bottom: 20px;"> Timeline </h2>
 
-    </section>
+        <div class="row">
 
-    <section id="data">
-      <h2 style="margin-bottom: 1em;"> Data </h2>
-      <p style="text-align: justify; font-size: x-large;">
-        All the data used for visualisation are retrieved from the <a
-          href="https://github.com/ExpDev07/coronavirus-tracker-api">coronavirus-tracker-api</a>.
-        The API gets its data from the 2019 <a href="https://github.com/CSSEGISandData/COVID-19">Novel Coronavirus
-          (nCoV) Data Repository</a>, provided by JHU CCSE.
-      </p>
-
-    </section>
-
-  </div>
+          <select id=select_ts class="selectpicker" data-live-search="true" data-style="btn-secondary">
+          </select>
 
 
+          <div class="col-sm">
+            <div id=buttonsTs class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-secondary ts-button active">
+                <input class="ts-type-selector" type="radio" name="options" id="confirmed" checked> Confirmed Cases
+              </label>
+              <label class="btn btn-secondary ts-button">
+                <input class="ts-type-selector" , type="radio" name="options" id="deaths"> Deaths
+              </label>
+              <label class="btn btn-secondary ts-button">
+                <input class="ts-type-selector" , type="radio" name="options" id="recovered"> Recovered
+              </label>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div id="tsdiv" style="margin-top: 1em; height: 50vh;"></div>
+
+      </section>
+
+      <section id="data">
+        <h2 style="margin-bottom: 1em;"> Data </h2>
+        <p style="text-align: justify; font-size: x-large;">
+          All the data used for visualisation are retrieved from the <a class="underlined"
+            href="https://github.com/ExpDev07/coronavirus-tracker-api">coronavirus-tracker-api</a>.
+          The API gets its data from the 2019 <a class="underlined" href="https://github.com/CSSEGISandData/COVID-19">Novel Coronavirus
+            (nCoV) Data Repository</a>, provided by JHU CCSE.
+        </p>
+
+      </section>
+
+    </div>
+  </main>
+
+
+  <footer class="footer" style="padding-bottom: 3px; padding-top: 3px;">
+    <div class="container">
+      Done by David & Benjamin Engelman -- <a href="https://github.com/DavidEngelman"><i class="fa fa-github"></i>
+        David</a> <a
+        href="https://github.com/BenjaminEngelman"><i class="fa fa-github"></i>
+        Benjamin</a>
+        -- Code available <a class="underlined" href="https://github.com/DavidEngelman/covid-19-viz">here</a>
+    </div>
+  </footer>
 
 </body>
+
+
+
 
 </html>
 
